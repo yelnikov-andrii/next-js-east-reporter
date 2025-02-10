@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Pobeda';
+    src: url('../../../public/fonts/pobeda-regular.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pobeda Bold';
+    font-weight: bold;
+    font-style: bold;
+    font-display: swap;
+    src: url('../../../public/fonts/pobeda-bold.ttf') format('truetype'),
+        url('../../../public/fonts/pobeda-bold.otf') format('opentype'),
+        url('../../../public/fonts/pobeda-bold.woff') format('woff'),
+        url('../../../public/fonts/pobeda-bold.woff2') format('woff2'),
+}
+
+@font-face {
+    font-family: 'Namu';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src:    url('../../../public/fonts/namu-1850.ttf') format('truetype'),
+            url('../../../public/fonts/namu-1850.otf') format('opentype'),
+            url('../../../public/fonts/namu-1850.woff2') format('woff2'),
+            url('../../../public/fonts/namu-1850.woff') format('woff'),
+}

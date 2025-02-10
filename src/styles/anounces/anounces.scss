@@ -1,0 +1,98 @@
+.anounces {
+    &__p {
+        margin: 0 0 16px 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        margin: 0 0 32px 0;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+        }
+    }
+
+    &__item {
+        width: calc((100% - 64px)/ 3);
+        padding: 16px 32px;
+        max-width: 425px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+
+        &:hover {
+            .anounces__title {
+                color: var(--header-hover-color);
+
+                &::before {
+                    position: absolute;
+                    bottom: -6px;
+                    content: '';
+                    left: 0;
+                    right: 0;
+                    height: 3px;
+                    background: var(--header-hover-color);
+                }
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            width: 45%;
+            padding-bottom: 0;
+            height: 100%;
+            min-height: 350px;
+        }
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    &__title {
+        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: 700;
+        width: 100%;
+        color: var(--txt-color);;
+        position: relative;
+        align-self: flex-start;
+
+        &::before {
+            position: absolute;
+            bottom: -4px;
+            content: '';
+            left: 0;
+            right: 100%;
+            height: 2px;
+            background: var(--header-hover-color);
+            transition: all 0.4s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 20px;
+        }
+
+        @media screen and (max-width: 425px) {
+            font-size: 18px;
+        }
+    }
+
+    &__pagination {
+        &.pagination {
+            margin: 64px 0 0 0;
+        }
+    }
+}

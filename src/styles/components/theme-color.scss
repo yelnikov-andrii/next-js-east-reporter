@@ -1,0 +1,31 @@
+#theme-toggle {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+
+    @media screen and (max-width: 1024px) {
+        order: 2;
+    }
+}
+
+.theme-toggle-svg--moon {
+    display: none;
+}
+
+.theme-toggle-svg--sun {
+    display: flex;
+}
+
+// When the light theme is active
+body.light-theme {
+    .theme-toggle-svg--moon {
+        display: flex;
+    }
+
+    .theme-toggle-svg--sun {
+        display: none;
+    }
+}
+

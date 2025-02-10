@@ -1,0 +1,13 @@
+.error {
+    padding: 96px 0;
+    min-height: 75vh;
+
+    &__h1 {
+        margin: 0 0 48px 0;
+        text-align: center;
+    }
+
+    &__link {
+        margin: 0 auto;
+    }
+}

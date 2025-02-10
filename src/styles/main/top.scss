@@ -1,0 +1,206 @@
+.main-top {
+    padding: 32px 0 64px;
+    min-height: 80vh;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    display: flex;
+
+    img {
+        height: unset;
+    }
+
+    @media screen and (min-width: 1280px) {
+        min-height: 90vh;
+    }
+
+    @media screen and (max-width: 1024px) {
+        min-height: unset;
+    }
+
+    @media screen and (max-width: 768px) {
+        gap: 16px;
+    }
+
+    &__container {
+        &.container {
+            max-width: 1200px;
+        }
+    }
+
+    &__search-box {
+        max-width: 480px;
+        margin: 0 0 16px 0;
+    }
+
+    &__search-icon {
+        position: absolute;
+        top: 50%;
+        right: 4px;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: var(--txt-secondary);
+        pointer-events: none;
+    }
+
+    &__block {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 16px;
+        border-radius: 4px;
+        margin: auto 0 0 0;
+        padding: 0 30px;
+
+        @media screen and (min-width: 1280px) {
+            margin: 0;
+        }
+
+        @media screen and (max-width: 1200px) {
+            flex-direction: column;
+            gap: 64px;
+        }
+
+        @media screen and (max-width: 768px) {
+            padding: 0 15px;
+            gap: 32px;
+        }
+    }
+
+    &__banner {
+        width: calc((100% - 16px) / 10 * 6);
+        border-radius: 4px;
+        color: var(--bg-color-main);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: center;
+        aspect-ratio: 16 / 9;
+        min-height: 400px;
+        height: auto;
+        flex: 1;
+
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+            height: 100%;
+            min-height: unset;
+        }
+    }
+
+    iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    &__h2 {
+        font-size: 42px;
+        font-weight: 700;
+        color: var(--bg-color-main);
+        margin: 0 0 16px 0;
+    }
+
+    &__p {
+        margin: 0 0 16px 0;
+    }
+
+    &__button {
+        border: none;
+        outline: none;
+        background-color: var(--bg-color-main);
+        color: var(--txt-color);
+        padding: 10px 5px;
+        cursor: pointer;
+    }
+
+    &__news {
+        width: 35%;
+        overflow: hidden;
+        flex: 1;
+        height: 100%;
+        min-height: 400px;
+
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+            height: unset;
+        }
+
+        &-img {
+            transition: all 0.4s ease;
+            object-fit: cover;
+            object-position: center;
+            height: auto;
+
+            @media screen and (max-width: 1200px) {
+                width: 100%;
+                min-height: 50%;
+                max-height: 100%;
+            }
+
+            @media screen and (max-width: 768px) {
+                max-height: 450px;
+            }
+
+            @media screen and (max-width: 425px) {
+                max-height: 350px;
+            }
+        }
+
+        &-card {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            height: 100%;
+
+            @media screen and (max-width: 1200px) {
+                flex-direction: column-reverse;
+                gap: 32px;
+                height: 100%;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            &:hover {
+                background-color: var(--bg-color-main);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+                .main-top__link {
+                    color: var(--header-hover-color);
+                }
+
+                .main-top__news-img {
+                    opacity: 0.7;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.3);
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+        }
+    }
+
+    &__link {
+        font-size: 32px;
+        margin: 4px 0 0 0;
+        font-family: "Pobeda";
+        width: calc((100% - 60% - 16px));
+
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 425px) {
+            font-size: 28px;
+        }
+    }
+}

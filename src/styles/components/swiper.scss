@@ -1,0 +1,134 @@
+.swiper {
+    height: auto;
+    max-height: 80vh;
+
+    &-vertical {
+        height: 100%;
+    }
+
+    @media screen and (max-width: 1200px) {
+        height: 480px;
+    }
+
+    @media screen and (max-width: 768px) {
+        height: 420px;
+    }
+
+    @media screen and (max-width: 425px) {
+        height: 360px;
+    }
+
+    &-slide {
+        height: calc((100% - 16px) / 2);
+    }
+
+    &-navigation {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @media screen and (max-width: 1200px) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        /* Center the navigation buttons */
+
+        @media screen and (max-width: 768px) {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+    }
+
+    &-button {
+        width: 40px;
+        height: 40px;
+        background: var(--header-hover-color);
+        color: var(--bg-color-main);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+}
+
+.main-top .swiper-navigation .swiper-button-prev,
+.main-top .swiper-navigation .swiper-button-next {
+    width: 24px;
+    height: 24px;
+    background-color: var(--header-hover-color);
+    color: var(--txt-color);
+    border-radius: 50%;
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+    transform: scale(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    &:active {
+        opacity: 1;
+    }
+
+    svg {
+        width: 12px;
+        height: 12px;
+
+        path {
+            fill: var(--bg-color-main);
+        }
+    }
+
+    &::after {
+        display: none;
+    }
+}
+
+.main-top .swiper-navigation .swiper-button-next {
+    transform: rotate(180deg);
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--link-color);
+            transform: scale(1.1), rotate(180deg);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        transform: rotate(90deg);
+
+        &:hover {
+            transform: scale(1.1), rotate(-90deg);
+        }
+    }
+}
+
+.main-top .swiper-navigation .swiper-button-prev {
+    @media screen and (max-width: 1200px) {
+        transform: rotate(-90deg);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--link-color);
+            transform: scale(1.1), rotate(180deg);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        &:hover {
+            transform: scale(1.1), rotate(-90deg);
+        }
+    }
+}
+
+.swiper-news {
+    width: 100%;
+    height: unset;
+    overflow: hidden;
+}

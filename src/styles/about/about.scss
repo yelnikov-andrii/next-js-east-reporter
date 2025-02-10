@@ -1,0 +1,34 @@
+.about {
+    padding: 64px 0;
+
+    &__h1 {
+        margin: 0 0 32px 0;
+    }
+
+    &__content {
+        p {
+            margin: 0 0 16px 0;
+        }
+
+        h2 {
+            margin: 64px 0 32px 0;
+        }
+
+        ul {
+            list-style: circle;
+            padding: 0 0 0 16px;
+            margin: 0 0 32px 0;
+        }
+
+        strong {
+            color: var(--link-color);
+            font-weight: 500;
+        }
+
+        img {
+            max-width: 600px;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+    }
+}

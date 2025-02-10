@@ -1,0 +1,36 @@
+// Light Theme Variables
+$light-theme-header-hover-color: #025cc0;
+$light-theme-txt-color: #181818;
+$light-theme-txt-secondary: #2a2a2a;
+$light-theme-bg-color-main: #F5F5F5;
+$light-theme-bg-color-secondary: #e0e0e0;
+$light-theme-link-color: #025cc0;
+
+// Dark Theme Variables (existing ones)
+$dark-theme-header-hover-color: #0057b8;
+$dark-theme-txt-color: #F5F5F5;
+$dark-theme-txt-secondary: #e0e0e0;
+$dark-theme-bg-color-main: #181818;
+$dark-theme-bg-color-secondary: #2a2a2a;
+$dark-theme-link-color: #ffd700;
+
+// Mixin for setting theme variables
+@mixin set-theme(
+  $header-hover-color, 
+  $txt-color, 
+  $txt-secondary, 
+  $bg-color-main, 
+  $bg-color-secondary, 
+  $link-color
+) {
+  --header-hover-color: #{$header-hover-color};
+  --txt-color: #{$txt-color};
+  --txt-secondary: #{$txt-secondary};
+  --bg-color-main: #{$bg-color-main};
+  --bg-color-secondary: #{$bg-color-secondary};
+  --link-color: #{$link-color};
+}
+
+// Font size
+
+$base_font_size: 16px;

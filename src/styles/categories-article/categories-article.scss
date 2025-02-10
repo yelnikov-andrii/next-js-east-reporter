@@ -1,0 +1,217 @@
+@use 'nav.scss';
+@use 'related-posts.scss';
+@use 'categories-article-form.scss';
+@use 'aside.scss';
+
+.categories-article {
+    padding: 32px 0 64px;
+    background: var(--bg-color-secondary);
+
+    &__container {
+        &.container {
+            max-width: 1480px;
+        }
+    }
+
+    &__breadcrumbs {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        font-size: 14px;
+        margin: 0 0 32px 0;
+
+        @media screen and (max-width: 1024px) {
+            gap: 8px;
+        }
+
+        @media screen and (max-width: 768px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: var(--txt-color);
+        transition: color 0.4s ease;
+        display: block;
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+            position: absolute;
+            bottom: -4px;
+            content: '';
+            left: 0;
+            right: 100%;
+            height: 2px;
+            background: var(--header-hover-color);
+            transition: all 0.4s ease;
+        }
+
+        &:hover {
+            color: var(--header-hover-color);
+
+            &::before {
+                position: absolute;
+                bottom: -4px;
+                content: '';
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: var(--header-hover-color);
+            }
+        }
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+
+        & .wp-block-embed {
+            display: none;
+        }
+
+        @media screen and (max-width: 1200px) {
+            flex-direction: column;
+        }
+    }
+
+    &__article-wrapper {
+        width: 68%;
+        overflow-y: auto;
+
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+            margin: 0 0 64px 0;
+        }
+    }
+
+    &__article {
+        background: var(--bg-color-main);
+        padding: 64px 32px;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        margin: 0 0 32px 0;
+
+        @media screen and (max-width: 768px) {
+            padding: 32px 16px;
+        }
+    }
+
+    &__meta {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        margin: 0 0 32px 0;
+    }
+
+    &__span {
+        color: var(--link-color);
+    }
+
+    &__nav {
+        margin: 0 0 64px 0;
+    }
+
+    &__h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 32px 0;
+    }
+
+    &__h2 {
+        margin: 0 0 32px 0;
+        font-size: 28px;
+
+        @media screen and (max-width: 768px) {
+            font-size: 24px;
+        }
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 600;
+
+        @media screen and (max-width: 768px) {
+            font-size: 20px;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        object-fit: contain;
+        margin: 0 0 16px 0;
+    }
+
+    &__content {
+        font-size: 18px;
+        font-family: 'Namu', 'sans-serif';
+
+        @media screen and (max-width: 768px) {
+            font-size: 16px;
+        }
+
+        p {
+            margin: 32px 0;
+            width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+
+            @media screen and (max-width: 768px) {
+                width: 100%;
+                margin: 16px 0;
+            }
+        }
+
+        em {
+            color: var(--link-color);
+        }
+    }
+
+    &__aside {
+        width: 30%;
+        min-height: 100vh;
+        height: fit-content;
+
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+        }
+    }
+
+    &__related {
+        margin: 0 0 64px 0;
+        text-decoration: none;
+    }
+
+    &__form {
+        margin: 0;
+    }
+
+    ul,
+    ol {
+        li {
+            margin: 32px 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            li {
+                margin: 16px 0;
+            }
+        }
+    }
+
+}
+
+.categories-article__article-wrapper {
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

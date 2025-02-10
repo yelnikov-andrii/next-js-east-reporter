@@ -1,0 +1,140 @@
+@use 'fonts/fonts.scss';
+@use 'helpers/vars.scss';
+@use 'normalize/normalize.scss';
+
+@use 'gutenbers-support/index.scss';
+
+@use 'templates/header.scss';
+@use 'templates/footer.scss';
+
+@use 'components/index.scss' as index2;
+
+@use 'main/main.scss';
+
+@use 'categories/categories.scss';
+@use 'anounces/anounces.scss';
+@use 'categories-article/categories-article.scss';
+@use 'contacts/contacts.scss';
+@use 'about/about.scss';
+@use 'interview/interview.scss';
+@use 'search/search.scss';
+@use 'error/error.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Light Theme Variables
+vars.$light-theme-header-hover-color: #025cc0;
+vars.$light-theme-txt-color: #181818;
+vars.$light-theme-txt-secondary: #2a2a2a;
+vars.$light-theme-bg-color-main: #F5F5F5;
+vars.$light-theme-bg-color-secondary: #e0e0e0;
+vars.$light-theme-link-color: #025cc0;
+
+// Dark Theme Variables (existing ones)
+vars.$dark-theme-header-hover-color: #0057b8;
+vars.$dark-theme-txt-color: #F5F5F5;
+vars.$dark-theme-txt-secondary: #e0e0e0;
+vars.$dark-theme-bg-color-main: #181818;
+vars.$dark-theme-bg-color-secondary: #2a2a2a;
+vars.$dark-theme-link-color: #ffd700;
+
+// Mixin for setting theme variables
+@mixin set-theme(
+  $header-hover-color, 
+  $txt-color, 
+  $txt-secondary, 
+  $bg-color-main, 
+  $bg-color-secondary, 
+  $link-color
+) {
+  --header-hover-color: #{$header-hover-color};
+  --txt-color: #{$txt-color};
+  --txt-secondary: #{$txt-secondary};
+  --bg-color-main: #{$bg-color-main};
+  --bg-color-secondary: #{$bg-color-secondary};
+  --link-color: #{$link-color};
+}
+
+body {
+  @include set-theme(vars.$dark-theme-header-hover-color,
+    vars.$dark-theme-txt-color,
+    vars.$dark-theme-txt-secondary,
+    vars.$dark-theme-bg-color-main,
+    vars.$dark-theme-bg-color-secondary,
+    vars.$dark-theme-link-color );
+}
+
+body.light-theme {
+  @include set-theme(vars.$light-theme-header-hover-color,
+    vars.$light-theme-txt-color,
+    vars.$light-theme-txt-secondary,
+    vars.$light-theme-bg-color-main,
+    vars.$light-theme-bg-color-secondary,
+    vars.$light-theme-link-color );
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    padding: 0 15px;
+  }
+
+  @media screen and (max-width: 425px) {
+    padding: 0 8px;
+  }
+}
+
+.dropdown {
+  display: flex;
+  max-height: 0px;
+  overflow: hidden;
+  transform-origin: top;
+  transform: scale(0);
+  transition: all 0.4s ease;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-color-main);
+  box-shadow: 0 8px 16px rgba(var(--txt-color-rgb), 0.1);
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  z-index: 3;
+  width: max-content;
+
+  /* @media screen and (min-width: 1024px) {
+      &:hover {
+          max-height: 400px;
+          transform: scale(1);
+      }
+  } */
+
+  /* @media screen and (max-width: 1024px) {
+      box-shadow: none;
+      position: relative;
+      padding: 0px;
+
+      &.active {
+          max-height: 400px;
+          transform: scale(1);
+          padding: 10px;
+      }
+  } */
+/* 
+  &__item {
+      &:hover {
+          &>.header-list__link {
+              color: var(--header-hover-color);
+          }
+      }
+  } */
+}
