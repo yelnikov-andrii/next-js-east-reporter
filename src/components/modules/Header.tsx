@@ -48,6 +48,58 @@ const SvgPlusIcon = () => {
     )
 }
 
+const MenuSubItem = ({ menuSubItem }: { menuSubItem: MenuSubItemI }) => {
+    const [url, setUrl] = useState<string>("");
+
+    useEffect(() => {
+        if (menuSubItem.url) {
+            const relativeUrl = menuSubItem.url.replace("https://eastreporter.com.ua", "");
+            setUrl(relativeUrl);
+        }
+    }, [menuSubItem.url]);
+    return (
+        <li className='dropdown__item' key={menuSubItem.id}>
+            <Link className='header-list__link' href={url}>
+                {menuSubItem.title}
+            </Link>
+        </li>
+    )
+}
+
+const MenuItem = ({ menuItem }: { menuItem: MenuItemI }) => {
+    const [url, setUrl] = useState<string>("");
+
+    useEffect(() => {
+        if (menuItem.url) {
+            const relativeUrl = menuItem.url.replace("https://eastreporter.com.ua", "");
+            setUrl(relativeUrl);
+        }
+    }, [menuItem.url]);
+
+    return (
+        <li key={menuItem.id} className='relative header-list__item'>
+            <div className='flex gap-4 items-center flex-start header-list__wrapper-link'>
+                <Link href={url} className='header-list__link text-[26px] font-semibold text-[var(--txt-color)] no-underline uppercase flex items-center gap-2 transition-colors duration-400 ease-in-out'>
+                    {menuItem.title}
+                </Link>
+                {menuItem?.children?.length > 0 && (
+                    <SvgPlusIcon />
+                )}
+            </div>
+            {menuItem?.children?.length > 0 && (
+                <ul className='dropdown'>
+                    {menuItem?.children.map((menuSubItem) => (
+                        <MenuSubItem
+                            key={menuSubItem.id}
+                            menuSubItem={menuSubItem}
+                        />
+                    ))}
+                </ul>
+            )}
+        </li>
+    )
+}
+
 export default function Header({ theme }: { theme: string }) {
     const [menu, setMenu] = useState<MenuI>();
 
@@ -76,27 +128,10 @@ export default function Header({ theme }: { theme: string }) {
                     <div className='w-max header__wrapper-list'>
                         <ul className='flex justify-between flex-grow items-center m-0 list-none p-0 gap-6 header__list header-list'>
                             {menu?.items.map((menuItem: MenuItemI) => (
-                                <li key={menuItem.id} className='relative header-list__item'>
-                                    <div className='flex gap-4 items-center flex-start header-list__wrapper-link'>
-                                        <Link href="/" className='header-list__link text-[26px] font-semibold text-[var(--txt-color)] no-underline uppercase flex items-center gap-2 transition-colors duration-400 ease-in-out'>
-                                            {menuItem.title}
-                                        </Link>
-                                        {menuItem?.children?.length > 0 && (
-                                            <SvgPlusIcon />
-                                        )}
-                                    </div>
-                                    {menuItem?.children?.length > 0 && (
-                                        <ul className='dropdown'>
-                                            {menuItem?.children.map((menuSubItem) => (
-                                                <li className='dropdown__item' key={menuSubItem.id}>
-                                                    <Link className='header-list__link' href="/">
-                                                        {menuSubItem.title}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </li>
+                                <MenuItem
+                                    menuItem={menuItem}
+                                    key={menuItem.id}
+                                />
                             ))}
                         </ul>
 

@@ -6,7 +6,7 @@ import CategoryPage from '@/components/templates/CategoryPage';
 
 
 export default async function page({ params }: { params: any }) {
-  const { slug } = params;
+  const { slug } = await params;
   if (!slug) redirect("/news");
 
   const categoryRes = await fetch(`${baseUrl}/wp-json/wp/v2/categories?slug=${slug}`);

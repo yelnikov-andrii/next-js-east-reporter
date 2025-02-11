@@ -9,10 +9,14 @@ interface MenuSubItemI {
     description: string;
     title: string;
     url: string;
+    object_id: number;
+    object: string;
+    object_slug: string;
 }
 
 interface MenuItemI extends MenuSubItemI {
     children: MenuSubItemI[];
+
 }
 
 interface CategoryI {
@@ -20,6 +24,7 @@ interface CategoryI {
     name: string;
     slug: string;
     parent: number;
+    link: string;
 }
 
 interface InterviewPost {
