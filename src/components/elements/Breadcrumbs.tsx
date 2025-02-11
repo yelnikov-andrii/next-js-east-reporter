@@ -39,7 +39,9 @@ export default function Breadcrumbs({ arr, currentPost }: { arr: CategoryI[], cu
             })}
             {currentPost && (
                 <>
-                    <Separator />
+                    {arr.length > 0 && (
+                        <Separator />
+                    )}
                     <span>
                         {currentPost}
                     </span>

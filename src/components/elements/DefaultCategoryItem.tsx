@@ -11,7 +11,7 @@ import he from 'he'
 export default async function DefaultCategoryItem({ post }: { post: PostI }) {
     const thumbnailUrl = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || defaultImage;
     const categories = post._embedded?.["wp:term"]?.[0];
-    const filteredCategories = categories.filter((category: CategoryI) => category.parent !== 0);
+    const filteredCategories = categories?.filter((category: CategoryI) => category.parent !== 0);
     const author = post._embedded?.["author"]?.[0]?.name || "Невідомий автор";
     const date = new Date(post.date).toLocaleDateString("uk-UA");
 
@@ -28,7 +28,7 @@ export default async function DefaultCategoryItem({ post }: { post: PostI }) {
             <div className="categories__description">
                 <div className="categories__description-wrapper-categories">
                     <div className="categories__description-categories">
-                        {filteredCategories.map((category: CategoryI) => (
+                        {filteredCategories?.map((category: CategoryI) => (
                             <Link href={replacebaseUrl(category.link)} className="categories__description-link" key={category.id}>
                                 {category.name}
                             </Link>

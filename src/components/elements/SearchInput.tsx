@@ -1,10 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+'use client'
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
 type SearchInputProps = {
   phrases: string[];
+  query: string;
+  setQuery: Dispatch<SetStateAction<string>>;
 };
 
-export default function SearchInput({ phrases }: SearchInputProps) {
+export default function SearchInput({ phrases, query, setQuery }: SearchInputProps) {
     const [placeholder, setPlaceholder] = useState("");
     const [index, setIndex] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
@@ -38,13 +41,18 @@ export default function SearchInput({ phrases }: SearchInputProps) {
       const timeout = setTimeout(handleTyping, isDeleting ? 150 : 200);
       return () => clearTimeout(timeout);
     }, [charIndex, isDeleting, index, phrases]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setQuery(e.target.value)
+    }
   
     return (
       <input
         ref={inputRef}
         className="search-box__input"
         placeholder={placeholder}
-        readOnly
+        value={query}
+        onChange={handleChange}
       />
     );
 }

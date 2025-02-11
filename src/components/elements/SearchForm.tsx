@@ -1,12 +1,13 @@
 'use client';
-import React from 'react'
-import { usePathname } from 'next/navigation';
+import React, { FormEvent, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation';
 import SearchInput from './SearchInput';
 
-export default function SearchForm() {
+function SearchForm() {
     const pathname = usePathname();
     const localePath = pathname.split('/')[1] || 'uk';
     const possibleLocales: LocaleT[] = ['uk', 'en', 'de'];
+    const [query, setQuery] = useState('');
 
     const locale: LocaleT = possibleLocales.includes(localePath as LocaleT)
         ? (localePath as LocaleT)
@@ -19,14 +20,24 @@ export default function SearchForm() {
     };
 
     const currentArrOfPhrases = phrazesByLang[locale];
+    const router = useRouter();
+
+    function searchPosts(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        if (!query) {
+            return;
+        }
+
+        router.push(`/search?s=${encodeURIComponent(query)}`);
+    }
 
     return (
         <div className='main-top__search-box'>
-            <form className="search-box" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-                {/* <input type="text" placeholder="" name="s" className="search-box__input"
-                    data-phrases='<?php echo esc_attr(json_encode($phrases)); ?>' /> */}
+            <form className="search-box" onSubmit={(e) => searchPosts(e)}>
                     <SearchInput 
                       phrases={currentArrOfPhrases}
+                      query={query}
+                      setQuery={setQuery}
                     />
                 <button className="search-box__icon" type="submit" aria-label="Знайти">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
@@ -39,3 +50,5 @@ export default function SearchForm() {
         </div>
     )
 }
+
+export default React.memo(SearchForm)
