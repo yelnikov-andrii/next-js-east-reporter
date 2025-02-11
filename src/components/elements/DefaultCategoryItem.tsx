@@ -5,6 +5,7 @@ import defaultImage from '@/images/default-image.png'
 import Link from 'next/link';
 import { calculateReadingTime } from '@/utils/calculateReadingTIme';
 import { replacebaseUrl } from '@/utils/replaceBaseUrl';
+import he from 'he'
 
 
 export default async function DefaultCategoryItem({ post }: { post: PostI }) {
@@ -19,7 +20,7 @@ export default async function DefaultCategoryItem({ post }: { post: PostI }) {
             <Image
                 className='categories__img'
                 src={thumbnailUrl}
-                alt={post.title.rendered}
+                alt={he.decode(post.title.rendered)}
                 width={400}
                 height={300}
             />
@@ -64,7 +65,7 @@ export default async function DefaultCategoryItem({ post }: { post: PostI }) {
                 </div>
                 <a className="categories__link" href="<?php the_permalink(); ?>">
                     <h2 className="categories__title">
-                        {post.title.rendered}
+                        {he.decode(post.title.rendered)}
                     </h2>
                 </a>
                 <div className="categories__description-bottom-block">

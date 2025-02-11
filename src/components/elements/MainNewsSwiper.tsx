@@ -64,7 +64,7 @@ export default function MainNewsSwiper({ posts }: { posts: PostI[] }) {
                                 <Link className="main-news__link-img" href={postLink}>
                                     <Image
                                         src={thumbnailUrl}
-                                        alt={post.title.rendered}
+                                        alt={he.decode(post.title.rendered)}
                                         className="main-news__img"
                                         width={400}
                                         height={300}

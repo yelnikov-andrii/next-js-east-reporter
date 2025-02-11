@@ -3,6 +3,7 @@ import SearchForm from '../elements/SearchForm'
 import { baseUrl } from '@/utils/baseUrl'
 import Link from 'next/link';
 import { replacebaseUrl } from '@/utils/replaceBaseUrl';
+import he from 'he'
 
 
 export default async function Aside() {
@@ -35,7 +36,7 @@ export default async function Aside() {
                 <div className="categories-article-aside__list">
                     {recentNews.map((recentNew: PostI) => (
                         <Link href={`/${recentNew.slug}`} key={recentNew.id} className="categories-article__link categories-article-aside__link">
-                            {recentNew.title.rendered}
+                            {he.decode(recentNew.title.rendered)}
                         </Link>
                     ))}
                 </div>

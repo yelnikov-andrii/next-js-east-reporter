@@ -12,8 +12,6 @@ export default function InterviewItem({ post }: { post: InterviewPost }) {
 
     const videoId = matches ? matches[1] : "";
 
-    console.log(post)
-
     return (
         <div className="interview__item">
             <div className="interview__video-container">

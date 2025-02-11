@@ -69,7 +69,7 @@ export default function MainTopNews({ posts }: { posts: PostI[] }) {
                                 {post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ? (
                                     <Image
                                         src={post._embedded["wp:featuredmedia"][0].source_url}
-                                        alt={post.title.rendered}
+                                        alt={he.decode(post.title.rendered)}
                                         width={320}
                                         height={190}
                                         style={{ objectFit: "cover", objectPosition: 'center', height: '100%', width: '320px' }}
