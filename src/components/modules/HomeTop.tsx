@@ -1,6 +1,6 @@
 import { baseUrl } from '@/utils/baseUrl';
 import { cookies } from 'next/headers';
-// import Image from 'next/image';
+import Image from 'next/image';
 import React from 'react'
 import MainTopNews from '../elements/MainTopNews';
 import SearchForm from '../elements/SearchForm';
@@ -19,22 +19,22 @@ export default async function HomeTop() {
 
     const categoryResponse = await fetch(`${baseUrl}/wp-json/wp/v2/categories?slug=${categoriesObjUnterview[locale]}`);
     const category = await categoryResponse.json();
-    // let randomInterview: InterviewPost | null = null;
+    let randomInterview: InterviewPost | null = null;
 
     if (category.length > 0) {
-        // const interviewsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?categories=${category[0].id}&per_page=5&order=desc&orderby=date`);
-        // const interviews = await interviewsResponse.json();
+        const interviewsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?categories=${category[0].id}&per_page=5&order=desc&orderby=date`);
+        const interviews = await interviewsResponse.json();
 
-        // if (interviews.length > 0) {
-        //     const randomIndex = Math.floor(Math.random() * interviews.length);
-        //     randomInterview = interviews[randomIndex];
-        // }
+        if (interviews.length > 0) {
+            const randomIndex = Math.floor(Math.random() * interviews.length);
+            randomInterview = interviews[randomIndex];
+        }
     }
-    // const randomPostContent = randomInterview?.content?.rendered || "";
-    // const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
-    // const matches = randomPostContent.match(youtubeRegex);
+    const randomPostContent = randomInterview?.content?.rendered || "";
+    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
+    const matches = randomPostContent.match(youtubeRegex);
 
-    // const videoId = matches ? matches[1] : "";
+    const videoId = matches ? matches[1] : "";
 
     const postsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?lang=uk&per_page=18&order=desc&orderby=date&_embed`);
     const posts = await postsResponse.json();
@@ -46,7 +46,7 @@ export default async function HomeTop() {
             </div>
 
             <div className="main-top__block">
-                {/* <div className="main-top__banner">
+                <div className="main-top__banner">
                     <div className="youtube-placeholder" data-video-id={videoId}>
                         <Image src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
                             alt="Video Thumbnail" width={500} height={300} />
@@ -62,7 +62,7 @@ export default async function HomeTop() {
                             </svg>
                         </button>
                     </div>
-                </div> */}
+                </div>
                 <MainTopNews
                     posts={posts}
                 />
