@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { fetchCategories } from '@/utils/fetchCategories';
 import { baseUrl } from '@/utils/baseUrl';
 import Link from 'next/link';
+import { replacebaseUrl } from '@/utils/replaceBaseUrl';
 
 
 export default async function MainImportant() {
@@ -26,7 +27,7 @@ export default async function MainImportant() {
                             {categories.map((category: CategoryI) => (
                                 <li className="dropdown__item" key={category.id}>
                                     <Link
-                                        href="/"
+                                        href={`/${replacebaseUrl(category.link)}`}
                                         className="main-important__link"
 
                                     >

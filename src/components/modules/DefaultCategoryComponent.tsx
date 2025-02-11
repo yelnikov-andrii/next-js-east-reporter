@@ -1,5 +1,6 @@
 import React from 'react'
 import DefaultCategoryItem from '../elements/DefaultCategoryItem'
+import Aside from '../elements/Aside'
 
 
 export default function DefaultCategoryComponent({ posts }: { posts: PostI[] }) {
@@ -13,6 +14,7 @@ export default function DefaultCategoryComponent({ posts }: { posts: PostI[] }) 
                     />
                 ))}
             </div>
+            <Aside />
         </div>
     )
 }

@@ -25,10 +25,12 @@ interface CategoryI {
     slug: string;
     parent: number;
     link: string;
+    count: number;
 }
 
 interface InterviewPost {
     id: number;
+    slug: string;
     content: {
         rendered: string;
         protected: boolean;
@@ -65,3 +67,14 @@ interface PostI {
 }
 
 type LocaleT = "uk" | "en" | "de";
+
+interface PageI {
+    id: number;
+    slug: string;
+    content: {
+        rendered: string;
+    }
+    title: {
+        rendered: string;
+    }
+}

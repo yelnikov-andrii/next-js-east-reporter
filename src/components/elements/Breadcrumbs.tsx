@@ -1,8 +1,9 @@
+import { replacebaseUrl } from '@/utils/replaceBaseUrl'
 import Link from 'next/link'
 import React from 'react'
 
 
-export default function Breadcrumbs({ arr }: { arr: CategoryI[] }) {
+export default function Breadcrumbs({ arr, currentPost }: { arr: CategoryI[], currentPost?: string }) {
     return (
         <nav className="categories__breadcrumbs">
             <Link href="/" className="categories__link categories__link--breadcrumbs">
@@ -16,7 +17,7 @@ export default function Breadcrumbs({ arr }: { arr: CategoryI[] }) {
                 if (index < arr.length - 1) {
                     return (
                         <React.Fragment key={category.id}>
-                            <Link href={category.link.replace("https://eastreporter.com.ua", "")} className="categories__link categories__link--breadcrumbs">
+                            <Link href={replacebaseUrl(category.link)} className="categories__link categories__link--breadcrumbs">
                                 {category.name}
                             </Link>
                             <svg className="categories__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -27,12 +28,17 @@ export default function Breadcrumbs({ arr }: { arr: CategoryI[] }) {
                     )
                 } else {
                     return (
-                        <Link key={category.id} href={category.link.replace("https://eastreporter.com.ua", "")} className="categories__link categories__link--breadcrumbs">
+                        <Link key={category.id} href={replacebaseUrl(category.link)} className="categories__link categories__link--breadcrumbs">
                             {category.name}
                         </Link>
                     )
                 }
             })}
+            {currentPost && (
+                <span>
+                    {currentPost}
+                </span>
+            )}
         </nav >
     )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 import he from 'he';
+import { replacebaseUrl } from '@/utils/replaceBaseUrl';
 
 
 export default function InterviewItem({ post }: { post: InterviewPost }) {
@@ -10,6 +11,8 @@ export default function InterviewItem({ post }: { post: InterviewPost }) {
     const matches = content.match(youtubeRegex);
 
     const videoId = matches ? matches[1] : "";
+
+    console.log(post)
 
     return (
         <div className="interview__item">
@@ -36,7 +39,7 @@ export default function InterviewItem({ post }: { post: InterviewPost }) {
                     </p>
                 </div>
             </div>
-            <Link className="categories__link" href="/">
+            <Link className="categories__link" href={`/${replacebaseUrl(post.slug)}`}>
                 <h2 className="categories__title interview__title">
                     {he.decode(post.title.rendered)}
                 </h2>

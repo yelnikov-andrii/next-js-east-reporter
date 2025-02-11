@@ -4,6 +4,7 @@ import defaultImage from '@/images/default-image.png'
 
 import Link from 'next/link';
 import { calculateReadingTime } from '@/utils/calculateReadingTIme';
+import { replacebaseUrl } from '@/utils/replaceBaseUrl';
 
 
 export default async function DefaultCategoryItem({ post }: { post: PostI }) {
@@ -27,7 +28,7 @@ export default async function DefaultCategoryItem({ post }: { post: PostI }) {
                 <div className="categories__description-wrapper-categories">
                     <div className="categories__description-categories">
                         {filteredCategories.map((category: CategoryI) => (
-                            <Link href="" className="categories__description-link" key={category.id}>
+                            <Link href={replacebaseUrl(category.link)} className="categories__description-link" key={category.id}>
                                 {category.name}
                             </Link>
                         ))}

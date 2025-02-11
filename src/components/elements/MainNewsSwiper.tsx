@@ -53,7 +53,7 @@ export default function MainNewsSwiper({ posts }: { posts: PostI[] }) {
             >
                 {posts.map((post: PostI) => {
                     const thumbnailUrl = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || defaultImage;
-                    const postLink = `/news/${post.slug}`;
+                    const postLink = `/${post.slug}`;
                     const categories = post._embedded?.["wp:term"]?.[0]?.map((cat: { name: string }) => cat.name).join(', ') || "Без категорії";
                     const author = post._embedded?.["author"]?.[0]?.name || "Невідомий автор";
                     const date = new Date(post.date).toLocaleDateString("uk-UA");

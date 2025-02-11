@@ -1,5 +1,6 @@
 import React from 'react'
 import InterviewItem from '../elements/InterviewItem'
+import Aside from '../elements/Aside'
 
 export default function InterviewComponent({ posts }: { posts: InterviewPost[] }) {
     return (
@@ -12,6 +13,7 @@ export default function InterviewComponent({ posts }: { posts: InterviewPost[] }
                     />
                 ))}
             </div>
+            <Aside />
         </div>
     )
 }

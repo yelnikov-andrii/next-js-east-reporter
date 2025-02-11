@@ -65,7 +65,7 @@ export default function MainTopNews({ posts }: { posts: PostI[] }) {
                 >
                     {posts.map((post) => (
                         <SwiperSlide key={post.id}>
-                            <Link href="/" className="main-top__news-card">
+                            <Link href={`/${post.slug}`} className="main-top__news-card">
                                 {post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ? (
                                     <Image
                                         src={post._embedded["wp:featuredmedia"][0].source_url}
