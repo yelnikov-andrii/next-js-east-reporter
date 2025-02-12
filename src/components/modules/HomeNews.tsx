@@ -5,12 +5,12 @@ import MainNewsSwiper from '../elements/MainNewsSwiper';
 import { fetchCategories } from '@/utils/fetchCategories';
 
 async function MainNewsCategoriesBlock({ category }: { category: CategoryI }) {
-    const postsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?categories=${category.id}&per_page=9&_embed`);
+    const postsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?categories=${category.id}&per_page=9&_embed`, { next: { revalidate: 86400 } });
     const posts = await postsResponse.json();
 
     return (
         <MainNewsSwiper
-          posts={posts}
+            posts={posts}
         />
     )
 }

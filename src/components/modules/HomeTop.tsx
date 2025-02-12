@@ -17,12 +17,12 @@ export default async function HomeTop() {
         'de': 'inteview-de'
     }
 
-    const categoryResponse = await fetch(`${baseUrl}/wp-json/wp/v2/categories?slug=${categoriesObjUnterview[locale]}`);
+    const categoryResponse = await fetch(`${baseUrl}/wp-json/wp/v2/categories?slug=${categoriesObjUnterview[locale]}`, { cache: 'force-cache' });
     const category = await categoryResponse.json();
     let randomInterview: InterviewPost | null = null;
 
     if (category.length > 0) {
-        const interviewsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?categories=${category[0].id}&per_page=5&order=desc&orderby=date`);
+        const interviewsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?categories=${category[0].id}&per_page=5&order=desc&orderby=date`, { next: { revalidate: 86400 } });
         const interviews = await interviewsResponse.json();
 
         if (interviews.length > 0) {
@@ -36,7 +36,7 @@ export default async function HomeTop() {
 
     const videoId = matches ? matches[1] : "";
 
-    const postsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?lang=uk&per_page=18&order=desc&orderby=date&_embed`);
+    const postsResponse = await fetch(`${baseUrl}/wp-json/wp/v2/posts?lang=uk&per_page=18&order=desc&orderby=date&_embed`, { next: { revalidate: 86400 } });
     const posts = await postsResponse.json();
 
     return (

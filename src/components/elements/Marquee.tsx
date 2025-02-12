@@ -24,7 +24,7 @@ export default async function Marquee() {
     const localeRaw = (await cookies()).get('NEXT_LOCALE')?.value || "uk";
     const locale: Locale = allowedLocales.includes(localeRaw as Locale) ? (localeRaw as Locale) : "uk";
 
-    const categoriesResponse = await fetch(`${baseUrl}/wp-json/wp/v2/categories?lang=${locale}&parent=0&hide_empty=true`);
+    const categoriesResponse = await fetch(`${baseUrl}/wp-json/wp/v2/categories?lang=${locale}&parent=0&hide_empty=true`, {cache: 'force-cache'});
     const categories = await categoriesResponse.json();
 
     return (
