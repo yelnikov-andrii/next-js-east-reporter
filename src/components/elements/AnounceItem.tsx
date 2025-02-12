@@ -13,7 +13,7 @@ export default function AnounceItem({ post }: { post: PostI }) {
         <Link className="anounces__item" href={`/${replacebaseUrl(post.slug)}`}>
             <Image
                 src={thumbnailUrl}
-                alt="Default image"
+                alt="Default image logo East Reporter"
                 className="anounces__img"
                 width={360}
                 height={310}

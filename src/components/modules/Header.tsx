@@ -142,7 +142,7 @@ export default function Header({ theme }: { theme: string }) {
                             type='light'
                         />
                         <div className="language-switcher">
-                            <button className="language-switcher__toggle">
+                            <button className="language-switcher__toggle" aria-label="Змінити мову / Change language">
                             </button>
                             <ul className="language-switcher__dropdown">
                             </ul>

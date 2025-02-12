@@ -39,9 +39,9 @@ export default async function MainImportant() {
                     </div>
                 </aside>
                 <div className="main-important__banner" data-aos="fade-right">
-                    <h5>
+                    <h3>
                         Будьте в курсі<br /> всіх новин з<br /><span className="main-important__span">East Reporter</span>
-                    </h5>
+                    </h3>
                 </div>
             </div>
         </section>
